@@ -1,0 +1,90 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background: #f9f9f9;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    .form-title {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    .topic-name {
+        text-align: center;
+        color: #1abc9c;
+        margin-bottom: 25px;
+        font-size: 18px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        resize: vertical;
+        font-size: 15px;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #1abc9c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #16a085;
+    }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">➕ Add New Entry</h2>
+
+    <div class="topic-name">
+        Topic: <strong>{{ topic }}</strong>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_text">Your Entry:</label>
+            {{ form.text }}
+            {% if form.text.errors %}
+                <div class="error">{{ form.text.errors }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Add Entry
+        </button>
+    </form>
+</div>
+
+{% endblock %}

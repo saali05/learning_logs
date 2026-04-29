@@ -1,0 +1,79 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 25px;
+        background: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    .form-title {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #1abc9c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #16a085;
+    }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">➕ Add a New Topic</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_text">Topic Name:</label>
+            {{ form.text }}
+            {% if form.text.errors %}
+                <div class="error">{{ form.text.errors }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="submit-btn">Add Topic</button>
+    </form>
+</div>
+
+{% endblock %}

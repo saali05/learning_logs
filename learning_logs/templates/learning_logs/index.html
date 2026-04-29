@@ -1,0 +1,53 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+<style>
+    .home-container {
+        text-align: center;
+        margin-top: 60px;
+        font-family: Arial, sans-serif;
+    }
+
+    .home-title {
+        font-size: 32px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    .home-text {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .home-btn {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 10px 20px;
+        background-color: #1abc9c;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+
+    .home-btn:hover {
+        background-color: #16a085;
+    }
+</style>
+
+<div class="home-container">
+    <h1 class="home-title">📘 Learning Log</h1>
+
+    <p class="home-text">
+        Learning Log helps you keep track of your learning journey.<br>
+        Organize topics, add entries, and monitor your progress easily.
+    </p>
+
+    <a href="{% url 'learning_logs:topics' %}" class="home-btn">
+        View Topics →
+    </a>
+</div>
+
+{% endblock content %}
